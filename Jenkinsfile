@@ -1,11 +1,9 @@
 pipeline {
-    agent any
+    agent { docker 'maven:3.3.3' }
     stages {
-        stage('Example') {
+        stage('build') {
             steps {
-		sh 'whoami'
-                sh 'env'
-                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                sh 'mvn --version'
             }
         }
     }
